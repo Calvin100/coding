@@ -1,0 +1,185 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#pragma warning (disable : 4996)
+
+#define LOVELETTERS_PRICE  25.00
+#define NUTCOOKIES_PRICE   20.00
+#define ASSTCOOKIES_PRICE  15.00
+#define discount_5         0.05 
+#define discount_10        0.10 
+#define discountM_20       20
+
+
+
+void main()
+{
+	int qtyloveletters, qtynutcookies, qtyasstcookies;
+	int i = 0, x;
+	float totalLoveletters, totalNutcookies, totalAsstcookies;
+	float subtotal, total;
+	float balance, amount, discount, deposit;
+	int grand_total = 0, grand_total3 = 0, grand_total5 = 0;
+	float grand_total2 = 0, grand_total4 = 0, grand_total6 = 0;
+	float grand_total7 = 0, grand_total8 = 0, grand_total9 = 0, grand_total10 = 0, grand_total11 = 0;
+	char order, response;
+	time_t t = time(NULL);
+	struct tm tm = *localtime(&t);
+
+
+	printf("                        +-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+ +-+-+-+ \n");
+	printf("                        |T|A|R|U|C| |F|e|s|t|i|v|e| |C|o|o|k|i|e|s| |S|d|n| |B|h|d| \n");
+	printf("                        +-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+ +-+-+-+ \n");
+	printf("                            +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+ \n");
+	printf("                            |C|o|o|k|i|e|s| |O|r|d|e|r|i|n|g| |S|y|s|t|e|m| \n");
+	printf("                            +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+ \n");
+
+	printf("                                         Today's Date: %d-%d-%d\n", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
+	printf("                                         <PRICES, DISCOUNTS etc> \n");
+
+	printf("                               +--------------+-----------+---------------------+ \n");
+	printf("                               |   CATEGORY   |    UNIT   | PRICE (RM) PER UNIT | \n");
+	printf("                               +--------------+-----------+---------------------+ \n");
+	printf("                               | LOVE LETTERS |    TIN    |      RM25.00        | \n");
+	printf("                               | NUT  COOKIES |    JAR    |      RM20.00        | \n");
+	printf("                               | ASST COOKIES |    JAR    |      RM15.00        | \n");
+	printf("                               +--------------+----------+----------------------+\n");
+	printf("************************************************** \n");
+
+	printf("Start Ordering (Y=yes)? ");
+	rewind(stdin);
+	scanf("%c", &order);
+
+	if (order == 'Y' || order == 'y') {
+
+	}
+	else {
+		exit(0);
+	}
+	system("cls");
+
+	do
+	{
+		x = ++i;
+	    printf("Order No: %d", x);
+
+
+	printf("\n   Item                      Quantity Required   \n");
+
+	printf("LOVE LETTERS  @ RM 25.00 per tin:  ");
+	scanf("%d", &qtyloveletters);
+
+	totalLoveletters = LOVELETTERS_PRICE * qtyloveletters;
+	subtotal = totalLoveletters;
+
+
+	printf("         Love Letters Order =                    RM %.2f \n ", totalLoveletters);
+	printf("        Order SubTotal  = RM%.2f \n\n", subtotal);
+
+
+	printf("NUT COOKIES  @ RM 20.00 per jar:  ");
+	scanf("%d", &qtynutcookies);
+
+	totalNutcookies = NUTCOOKIES_PRICE * qtynutcookies;
+	subtotal = totalLoveletters + totalNutcookies;
+
+	printf("         Nut Cookies Order =                     RM %.2f \n", totalNutcookies);
+	printf("         Order SubTotal = RM%.2f \n\n", subtotal);
+
+	printf("ASST COOKIES  @ RM 15.00 per jar:   ");
+	scanf("%d", &qtyasstcookies);
+
+	totalAsstcookies = ASSTCOOKIES_PRICE * qtyasstcookies;
+
+	printf("         Asst Cookies Order =                    RM %.2f \n", totalAsstcookies);
+
+	total = totalLoveletters + totalNutcookies + totalAsstcookies;
+
+
+	if (total > 1000) {
+
+		discount = total * discount_10;
+		
+	}
+	else if (total >= 500 && total < 1000) {
+		discount = total * discount_5;
+		
+	}
+	else {
+		discount = 0;
+	}
+
+	amount = total - discount;
+
+	printf("                                                 -----------\n");
+	printf("                   Order Total   :                 RM%.2f \n\n", total);
+	printf("                   DISCOUNT      :                 RM%.2f \n", discount);
+	printf("                   AMOUNT TO PAY :                 RM%.2f \n", amount);
+	printf("                   DEPOSIT       :                 RM");
+	scanf("%f", &deposit);
+	balance = amount - deposit;
+	printf("                   BALANCE       :                 RM%.2f \n", balance);
+
+    
+	printf("================================================================== \n");
+	printf("TARUC FESTIVE COOKIES SDN BHD           Phone     : 0123456789 \n");
+	printf("     ORDER NOTE                         Order Date: %d-%d-%d \n", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
+	printf("Your Order No is %d \n\n", i);
+	printf("      %d LOVE LETTERS  @ RM 25.00 per tin: RM%.2f \n", qtyloveletters, totalLoveletters);
+	printf("      %d NUT COOKIES   @ RM 20.00 per jar: RM%.2f \n ", qtynutcookies, totalNutcookies);
+	printf("     %d ASST COOKIES  @ RM 15.00 per jar: RM%.2f \n\n", qtyasstcookies, totalAsstcookies);
+	printf("                   Order Total   :         RM%.2f \n", total);
+	printf("                   DISCOUNT      :         RM%.2f \n", discount);
+	printf("                   AMOUNT TO PAY :         RM%.2f \n", amount);
+	printf("                   DEPOSIT       :         RM%.2f \n", deposit);
+	printf("                   BALANCE       :         RM%.2f \n\n", balance);
+	printf("                     Thank You For Your Order. \n");
+	printf("        Please bring this Order Note when collecting your cookies. :-)\n");
+	printf("================================================================== \n");
+	
+	printf("Next Order (Y = yes)?");
+	rewind(stdin);
+	scanf("%c", &response);
+
+	grand_total =  grand_total  + qtyloveletters;
+	grand_total2 = grand_total2 + totalLoveletters;
+	
+	grand_total3 = grand_total3 + qtynutcookies;
+	grand_total4 = grand_total4 + totalNutcookies;
+
+	grand_total5 = grand_total5 + qtyasstcookies;
+	grand_total6 = grand_total6 + totalAsstcookies;
+
+    grand_total7 = grand_total7  + total;
+	grand_total8 = grand_total8  + discount;
+	grand_total9 = grand_total9  + amount;
+	grand_total10 = grand_total10  + deposit;
+	grand_total11 = grand_total11  + balance;
+
+	
+
+	} while (response == 'Y' || response == 'y');
+	
+
+	
+	printf("                        ORDER SUMMARY FOR TODAY (%d-%d-%d)\n", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
+	printf("                        ==================================\n");
+	printf("Today Number Of Order: %d \n", x);
+	printf("     Total Orders        Unit Price           Amount \n");
+	printf("   %d LOVE LETTERS  @ RM 25.00 per tin    :  RM%.2f \n", grand_total, grand_total2);
+	printf("   %d NUT COOKIES   @ RM 20.00 per jar    :  RM%.2f \n ", grand_total3, grand_total4);
+	printf("  %d ASST COOKIES  @ RM 15.00 per jar    :  RM%.2f \n", grand_total5, grand_total6);
+	printf("                                         ------------\n");
+	printf("                  TOTAL SALES             :  RM%.2f \n", grand_total7);
+	printf("                  TOTAL DISCOUNT          :  RM%.2f \n", grand_total8);
+	printf("                                         ------------\n");
+	printf("                  TOTAL NET SALES         :  RM%.2f \n", grand_total9);
+	printf("                                         ============\n");
+	printf("                  TOTAL DEPOSIT           :  RM%.2f \n", grand_total10);
+	printf("                  TOTAL BALANCE           :  RM%.2f \n", grand_total11);
+
+
+
+	system("pause");
+
+	}
